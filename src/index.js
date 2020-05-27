@@ -72,23 +72,24 @@ class App extends React.Component {
     }
 
     return (
-      <div className="container">
-        <div className="App">
+      <div>
+        <figure>
           <img className="Logo" src={logo} alt="Rick y Morty" />
-
-          <ul className="row">
-            {this.state.data.results.map(character => (
-              <li className="col-6 col-md-3" key={character.id}>
-                <CharacterCard character={character} />
-              </li>
-            ))}
-          </ul>
-
-          {this.state.loading && <Loader />}
-
-          {!this.state.loading && this.state.data.info.next && (
-            <button onClick={() => this.fetchCharacters()}>Load More</button>
-          )}
+        </figure>
+        <div className="App">
+          <div className="container">
+              <ul className="row">
+                {this.state.data.results.map(character => (
+                  <li className="col-6 col-md-3" key={character.id}>
+                    <CharacterCard character={character} />
+                  </li>
+                ))}
+              </ul>
+              {this.state.loading && <Loader />}
+              {!this.state.loading && this.state.data.info.next && (
+                <button onClick={() => this.fetchCharacters()}>Load More</button>
+              )}
+            </div>
         </div>
       </div>
     );
